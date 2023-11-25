@@ -1,0 +1,49 @@
+
+<div class="row">
+    <div class="col col-lg-4 bg-body-secondary" style="padding: 25px;">
+        <code>
+            <pre>{{jsonData |json}}</pre>
+        </code>
+    </div>
+    <div class="col col-lg-8">
+        <div class="row bg-info-subtle" style="padding: 25px; height: calc(100vh - 40px); overflow:auto;">
+            
+            <div class="row" *ngFor="let chat of chatHistory">
+            
+                <div class="row justify-content-end">
+                    <div class="col-5">
+                        <div class="card text-bg-primary">
+                            <div class="card-body" style="padding: 10px">
+                                {{ chat.user }}
+                                <div style="font-size: 10px;">{{ chat.time | date:"dd/MM/yyyy 'às' HH:mm" }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-start">
+                    <div class="col-5">
+                        <div class="card">
+                            <div class="card-body" style="padding: 10px">
+                                {{ chat.bot }} 
+                                <div style="font-size: 10px;">{{ chat.time | date:"dd/MM/yyyy 'às' HH:mm" }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <form [formGroup]="chatForm" (ngSubmit)="doChat()">
+            <div class="row bg-dark-subtle" style="padding: 25px;">
+                <div class="col col-lg-10">
+                    <input class="form-control form-control-lg" type="text" formControlName="question" placeholder="Faça um pergunta para seus dados" aria-label=".form-control-lg example">
+                </div>
+                <div class="col col-lg-2">
+                    <button type="submit" class="btn btn-info btn-lg">GO</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
